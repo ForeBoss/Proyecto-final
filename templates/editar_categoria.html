@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Administrador</title>
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet"/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='estilos/sb-admin-2.min.css') }}">
+    <script src="{{ url_for('static',filename='js/categorias.js') }}"></script>
+
+</head>
+<body id="page-top">
+<div id="wrapper">
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+            <div class="sidebar-brand-text mx-3">
+                Gestion de <br/>prestamos
+            </div>
+        </a>
+        <hr class="sidebar-divider my-0"/>
+        <li class="nav-item active">
+            <a class="nav-link" href="http://127.0.0.1:5000/dashboard"><span>Dashboard</span></a>
+        </li>
+        <hr class="sidebar-divider"/>
+        <div class="sidebar-heading">Opciones</div>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="http://127.0.0.1:5000/equipos"><span>Equipos</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="http://127.0.0.1:5000/categoria"><span>Categorias</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="http://127.0.0.1:5000/estudiantes"><span>Estudiantes</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="http://127.0.0.1:5000/prestamos"><span>Prestamos</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="http://127.0.0.1:5000/usuarios"><span>Usuarios</span></a>
+        </li>
+        <hr class="sidebar-divider"/>
+        <li class="nav-item">
+            {% if session['usuarioid'] %}
+                <a class="nav-link collapsed text-center" href="{{ url_for('logout') }}"><span
+                        class="text-center">Salir</span></a>
+            {% endif %}
+        </li>
+    </ul>
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown no-arrow d-sm-none">
+                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+
+                    </li>
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {% if session['usuarioid'] %}
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ session.nombre }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="container-fluid">
+
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800 ml-4">Editar categoria</h1>
+                </div>
+
+        {% for categoria in categorias %}
+        <form method="post" id="categoryForm" action="{{ url_for('guardar_categoria')}}">
+            <div class="">
+                <div class="">
+
+                    <div class="form-group">
+                        <label for="category" class="control-label">Nombre de categoria</label>
+                        <input type="text" name="nombre" id="nombre" autocomplete="off" class="form-control" placeholder="Nombre" value="{{categoria.nombre}}"/>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status" class="control-label">Estatus</label>
+                        <select class="form-control" id="estatus" name="estatus"/>
+                            <option value="">Seleccionar</option>
+                            <option value="Disponible" {% if categoria.estatus == 'Disponible' %}selected="selected" {% endif %}>Disponible</option>
+                            <option value="No disponible"  {% if categoria.estatus == 'No disponible' %}selected="selected" {% endif %}>No disponible</option>
+                        </select>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" name="categoriaid" id="categoriaid" value="{{categoria.categoriaid}}" />
+                    <input type="hidden" name="action" id="action" value="editar_categoria" />
+                    <input type="submit" name="save" id="save" class="btn btn-info" value="Guardar" />
+                </div>
+            </div>
+        </form>
+        {% endfor %}
+    </div>
+</body>
+</html>

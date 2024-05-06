@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <title>Gestion de equipos</title>
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='estilos/styles.css') }}">
+</head>
+<body class="text-center">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <main class="form-signin">
+        <form action="{{ url_for('login') }}" method="post">
+            <h1 class="h3 mb-3 fw-normal">Login</h1>
+
+            {% if mensaje is defined and mensaje %}
+                <div class="alert alert-warning">{{ mensaje }}</div>
+            {% endif %}
+
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" name="correo"
+                       placeholder="Digita tu correo">
+                <label for="floatingInput">Correo</label>
+            </div>
+            <br>
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" name="contraseña"
+                       placeholder="Digita tu contraseña">
+                <label for="floatingPassword">Contraseña</label>
+            </div>
+            <br>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
+        </form>
+    </main>
+</div>
+</body>
+</html>

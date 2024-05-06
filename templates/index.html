@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de equipos</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='estilos/styles.css') }}">
+
+</head>
+
+  <body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+          <a class="navbar-brand" href="#inicio">Sistema de prestamos</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#inicio">Inicio</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#objetivos">Objetivos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <header class="py-5">
+        <div class="container px-5">
+          <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+              <div class="my-5 text-center text-xl-start">
+                <h1 class="display-5 fw-bolder mb-2">
+                  Registro y control de préstamos de equipos de laboratorio
+                </h1>
+                <p class="lead fw-normal mb-4">
+                  Alternativa para el registro y control de préstamos de equipos
+                  de laboratorio, creado por <b>Andrés Felipe Forero Cardoso</b>
+                </p>
+                <div
+                  class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start"
+                >
+                  <a
+                    class="btn btn-primary btn-lg px-4 me-sm-3"
+                    href="http://127.0.0.1:5000/login"
+                    >Iniciar sesión</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center">
+              <img
+                class="img-fluid rounded-3 my-5"
+                src="https://png.pngtree.com/png-clipart/20231018/original/pngtree-old-electonics-components-group-photo-png-image_13347901.png"
+                alt="..."
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+    </main>
+
+    <section class="py-5 bg-light" id="objetivos">
+      <div class="container px-5 my-5">
+        <div class="text-left mb-5">
+          <p class="lead fw-normal text-muted mb-0">
+            Objetivos del proyecto
+          </p>
+        </div>
+        <div class="row row-cols-12 gx-5">
+          <div>
+            <div class="accordion mb-5" id="accordionExample">
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingThree">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="true"
+                    aria-controls="collapseThree"
+                  >
+                    #1
+                  </button>
+                </h3>
+                <div
+                  class="accordion-collapse collapse show"
+                  id="collapseThree"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Permitir el registro y control de préstamos de equipos de
+                    laboratorio de manera más eficiente y organizada.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingThree">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    #2
+                  </button>
+                </h3>
+                <div
+                  class="accordion-collapse"
+                  id="collapseThree"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Proporcionar información en tiempo real sobre la
+                    disponibilidad de los equipos electrónicos para los
+                    estudiantes y docentes.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingThree">
+                  <button
+                    class="accordion-button "
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    #3
+                  </button>
+                </h3>
+                <div
+                  class="accordion-collapse"
+                  id="collapseThree"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Facilitar la reserva previa de los instrumentos de
+                    laboratorio para que la entrega se haga de manera rápida y
+                    ordenada
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingThree">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    #4
+                  </button>
+                </h3>
+                <div
+                  class="accordion-collapse"
+                  id="collapseThree"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Generar reportes diarios para el administrador que permitan
+                    tomar decisiones informadas sobre el uso y mantenimiento de
+                    los equipos.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingThree">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    #5
+                  </button>
+                </h3>
+                <div
+                  class="accordion-collapse"
+                  id="collapseThree"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Establecer un seguimiento y control a los préstamos de
+                    equipos de laboratorio para garantizar su correcta
+                    utilización y evitar su deterioro o pérdida.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h3 class="accordion-header" id="headingThree">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseThree"
+                    aria-expanded="false"
+                    aria-controls="collapseThree"
+                  >
+                    #6
+                  </button>
+                </h3>
+                <div
+                  class="accordion-collapse"
+                  id="collapseThree"
+                  aria-labelledby="headingThree"
+                  data-bs-parent="#accordionExample"
+                >
+                  <div class="accordion-body">
+                    Proporcionar un comprobante de préstamo con un código QR
+                    para facilitar la identificación y recuperación de los
+                    equipos asignados a cada usuario.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-dark py-4 mt-auto">
+      <div class="container px-5">
+        <div
+          class="row align-items-center justify-content-between flex-column flex-sm-row"
+        >
+          <div class="col-auto">
+            <div class="small m-0 text-white">
+              Copyright &copy; Andrés Felipe Forero Cardoso
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>
+
+</html>
